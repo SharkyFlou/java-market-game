@@ -1,0 +1,35 @@
+package model;
+
+public enum EventId {
+    //bad events
+    ROTTEN_WOOD,
+
+    OAK_FOREST_BURNED,
+    BIRCH_FOREST_BURNED,
+
+    OAK_WOODWORMS,
+    BIRCH_WOODWORMS,
+
+    STEEL_MINE_COLLAPSE,
+    STONE_MINE_COLLAPSE,
+
+    SAND_STORM,
+    GLASS_PANE_BREAK,
+
+    //good events
+
+    OAK_FOREST_GROWTH,
+    BIRCH_FOREST_GROWTH,
+
+    NEW_OAK_SELER,
+    NEW_BIRCH_SELER,
+
+    NEW_STEEL_MINE,
+
+    LAB_GROW_OAK,
+    LAB_GROW_BIRCH,
+    LAB_GROW_STEEL,
+    LAB_GROW_STONE,
+
+    NEW_DESERT_ISLAND
+}

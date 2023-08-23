@@ -1,0 +1,171 @@
+@startuml
+skinparam style strictuml
+skinparam classAttributeIconSize 0
+skinparam classFontStyle Bold
+hide enum methods
+
+
+package model{
+    interface inventoryObserver{
+        +updateInv()
+    }
+
+    interface eventObserver{
+        +updateEvent()
+    }
+
+    interface moneyObserver{
+        +updateMoney()
+    }
+
+    interface weightObserver{
+        +updateWeight()
+    }
+
+
+    Enum ItemId{
+        Oak_log
+        Oak_plank
+        Oak_stick
+        Birch_log
+        Birch_plank
+        Birch_stick
+        Steel_ingot
+        Steel_bar
+        Stone_brick
+        Sand
+        Glass_pane
+
+        Oak_door
+        Oak_window
+        Oak_chair
+        Oak_table
+        Oak_set
+
+        Birch_door
+        Birch_window
+        Birch_chair
+        Birch_table
+        Birch_set
+
+        Screw_nails
+
+        Steel_door
+        Steel_window
+        Steel_chair
+        Steel_table
+        Steel_set
+
+        Stone_door
+        Stone_window
+        Stone_chair
+        Stone_table
+        Stone_set
+    }
+
+    class Item{
+        -id : ItemId
+        -name: String
+        -description: String
+        -weight: Integer
+        -isRawMaterial: Boolean
+        +Item(id: ItemId, name: String, description: String, weight: Integer, isRawMaterial: Boolean)
+        +getId(): ItemId
+        +getName(): String
+        +getDescription(): String
+        +getWeight(): Integer
+        +isRawMaterial(): Boolean
+    }
+
+    Item *-r->  ItemId: <<own>> >
+
+    class InfoItem{
+        -allItems: Dictionary<ItemId, Item>
+        -allItemsPrices: Dictionary<ItemId, Integer[*]>
+        +getItem(id: ItemId): Item
+        +getItemPrice(id: ItemId, month: Integer): Integer
+    }
+
+    InfoItem *-->  Item: <<uses>> >
+    InfoItem *-->  ItemId:  <<uses>> > 
+
+    class Inventory{
+        -items: Dictionary<Item, Integer>
+        -money: Integer
+        -weightMax: Integer
+        -inventoryObservers: List<inventoryObserver>
+        -moneyObservers: List<moneyObserver>
+        -weightObservers: List<weightObserver>
+        +Inventory()
+        +getItems(): Dictionary<Item, Integer>
+        +getMoney(): Integer
+        +getWeightMax(): Integer
+        +addItem(item: Item, quantity: Integer): Boolean
+        +removeItem(item: Item, quantity: Integer): Boolean
+        +addMoney(money: Integer): Boolean
+        +removeMoney(money: Integer): Boolean
+    }
+
+    Inventory *-->  Item: <<own>> >
+    Inventory *-->  inventoryObserver: <<own>> >
+    Inventory *-->  moneyObserver: <<own>> >
+    Inventory *-->  weightObserver: <<own>> >
+
+
+    class Event{
+        -id: Integer
+        -name: String
+        -description: String
+        -date: Date
+        -duration: Integer
+        -price: Integer
+        -items: Dictionary<Item, Integer>
+        +Event(id: Integer, name: String, description: String, date: Date, duration: Integer, price: Integer, items: Dictionary<Item, Integer>)
+        +getId(): Integer
+        +getName(): String
+        +getDescription(): String
+        +getDate(): Date
+        +getDuration(): Integer
+        +getPrice(): Integer
+        +getItems(): Dictionary<Item, Integer>
+    }
+
+}
+
+package view{
+    class Screen extends JFrame, inventoryObserver, eventObserver, moneyObserver, weightObserver{
+        + Screen()
+    }
+}
+
+package controller{
+    class GameMain{
+        +main()
+        -init()
+    }
+
+    GameMain --> Game : <<create>> >
+
+    class Game{
+        -inventory: Inventory
+        -eventManager: EventManager
+        +Game()
+        -start()
+    }
+
+    Game --> Inventory : <<create>> >
+    Game --> EventManager : <<create>> >
+
+
+    class EventManager{
+        -events: List<Event>
+        +EventManager()
+        -createEvent()
+        -deleteEvent()
+        -updateEvent()
+    }
+
+    EventManager *-d->  Event: <<own>> >
+}
+
+@enduml
