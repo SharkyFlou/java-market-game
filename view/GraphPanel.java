@@ -121,16 +121,15 @@ public class GraphPanel extends JPanel {
         int actualMonth = Market.getInstance().getActualMonth();
         for (int i = 0; i < monthsToDisplay; i++) {
             //if beginning of year, or Jan draw year
-            if(i==0 || (data.size() - monthsToDisplay + i) %12==0){
-                byte[] bytes = intToBytes(2000 + (actualMonth + i) / 12);
+            if(i==0 || (actualMonth - monthsToDisplay + i) %12 == 1){
+                byte[] bytes = intToBytes( (2000 + (actualMonth - (monthsToDisplay-i)) / 12));
                 g.drawBytes(bytes, 0, bytes.length, x + spaceFromLeft, heightBottom + 40);
             }
             x = i * spacing;
             g.drawLine(x + spaceFromLeft + 2, heightBottom, x + spaceFromLeft + 2, heightBottom + 5);
-            byte[] bytes = strToBytes(months[ (data.size() - monthsToDisplay + i) %12]);
-            g.drawBytes(bytes, 0, bytes.length, x + spaceFromLeft, heightBottom + 20);
+            byte[] bytes = strToBytes(months[ (actualMonth - monthsToDisplay + i) %12]);
+            g.drawBytes(bytes, 0, bytes.length, x + spaceFromLeft, heightBottom + 20+ (i%2)*10);
         }
-
     }
 
     private int getMax() {

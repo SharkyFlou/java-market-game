@@ -29,7 +29,7 @@ public final class Market {
         return instance;
     }
 
-    private void passMonth(){
+    public void passMonth(){
         actualMonth++;
         for(EventId eventId : activeEvents.keySet()){
             activeEvents.put(eventId, activeEvents.get(eventId) - 1);

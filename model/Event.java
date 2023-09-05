@@ -1,5 +1,7 @@
 package model;
 
+import java.awt.image.BufferedImage;
+
 public class Event {
     private EventId id;
     private String name;
@@ -13,8 +15,9 @@ public class Event {
     private float multiplierBase;
     private float multiplierProgressive;
     private boolean goodEvent;
+    private BufferedImage image;
 
-    public Event(EventId id, String name, String description, int duration, ItemId[] affectedItems, int probability, int unlockMonth, int cooldown, float multiplierBase, float multiplierProgressive, boolean goodEvent) {
+    public Event(EventId id, String name, String description, int duration, ItemId[] affectedItems, int probability, int unlockMonth, int cooldown, float multiplierBase, float multiplierProgressive, boolean goodEvent, BufferedImage image) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -27,6 +30,7 @@ public class Event {
         this.multiplierBase = multiplierBase;
         this.multiplierProgressive = multiplierProgressive;
         this.goodEvent = goodEvent;
+        this.image = image;
     }
 
     public EventId getId() {

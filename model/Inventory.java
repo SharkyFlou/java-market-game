@@ -5,14 +5,15 @@ import java.util.HashMap;
 import java.util.List;
 
 import view.InventoryView;
+import view.MoneyView;
 
 public class Inventory {
     private HashMap<ItemId, Integer> items;
     private int money;
     private int maxWeight;
-    private List<InventoryObserver> inventoryObserver;
-    private List<MoneyObserver> moneyObserver;
-    private List<WeightObserver> weightObserver;
+    private List<InventoryObserver> inventoryObservers;
+    private List<MoneyObserver> moneyObservers;
+    private List<WeightObserver> weightObservers;
 
 
 
@@ -21,17 +22,17 @@ public class Inventory {
         this.money = 0;
         this.maxWeight = maxWeight;
 
-        inventoryObserver = new ArrayList<InventoryObserver>();
-        moneyObserver = new ArrayList<MoneyObserver>();
-        weightObserver = new ArrayList<WeightObserver>();
+        inventoryObservers = new ArrayList<InventoryObserver>();
+        moneyObservers = new ArrayList<MoneyObserver>();
+        weightObservers = new ArrayList<WeightObserver>();
     }
 
     public void addInvObserver(InventoryObserver invObserver) {
-        this.inventoryObserver.add(invObserver);
+        this.inventoryObservers.add(invObserver);
     }
 
     public void addWeightObserver(InventoryView inventoryView) {
-        this.weightObserver.add(inventoryView);
+        this.weightObservers.add(inventoryView);
     }
 
     public HashMap<ItemId, Integer> getItems() {
@@ -66,11 +67,11 @@ public class Inventory {
 
     public void addMoney(int money) {
         this.money += money;
-        
+        notifyMoneyObserver();
     }
 
     public void notifyInvObservers(ItemId item, Integer qtt) {
-        for (InventoryObserver invObserver : this.inventoryObserver) {
+        for (InventoryObserver invObserver : this.inventoryObservers) {
             invObserver.updateInventory(item, qtt);
         }
     }
@@ -81,9 +82,19 @@ public class Inventory {
     }
 
     public void notifyWeightObservers() {
-        for (WeightObserver weightObserver : this.weightObserver) {
+        for (WeightObserver weightObserver : this.weightObservers) {
             weightObserver.updateMaxWeight(this.maxWeight);
         }
+    }
+
+    public void notifyMoneyObserver() {
+        for (MoneyObserver moneyObserver : this.moneyObservers) {
+            moneyObserver.updateMoney(money);
+        }
+    }
+
+    public void addMoneyObserver(MoneyObserver moneyObserver) {
+        this.moneyObservers.add(moneyObserver);
     }
 
 

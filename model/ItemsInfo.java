@@ -111,8 +111,6 @@ public final class ItemsInfo {
             e.printStackTrace();
             return null;
         }
-        
-
         return image;
     }
 

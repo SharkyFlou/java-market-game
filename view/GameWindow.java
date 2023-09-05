@@ -4,11 +4,13 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.util.Dictionary;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -16,6 +18,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
 import model.ItemId;
+import model.Market;
 
 public class GameWindow extends JFrame {
 
@@ -27,7 +30,7 @@ public class GameWindow extends JFrame {
     private static final java.awt.Color LIGHT_GRAY = new java.awt.Color(240, 240, 240);
     private static final java.awt.Color GRAY = new java.awt.Color(200, 200, 200);
 
-    public GameWindow(InventoryView inventoryView, int width, int height) {
+    public GameWindow(InventoryView inventoryView, int width, int height, MoneyView moneyView) {
         this.WIDTH = width;
         this.HEIGHT = height;
         setTitle("Market game");
@@ -55,7 +58,31 @@ public class GameWindow extends JFrame {
         JPanel topRightPanel = new JPanel();
         topRightPanel.setPreferredSize(new Dimension(WIDTH / 3 * 2, HEIGHT / 12));
         topRightPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+        topRightPanel.setLayout(new BoxLayout(topRightPanel, BoxLayout.X_AXIS));
         rightPanel.add(topRightPanel);
+
+        //adding the money
+        JPanel moneyPanel = new JPanel();
+        moneyPanel.setPreferredSize(new Dimension((WIDTH / 3 * 2 / 5)*4, HEIGHT / 12));
+        moneyPanel.add(moneyView);
+        topRightPanel.add(moneyPanel);
+
+        //adding the button to change the month
+        JPanel nextMonthPanel = new JPanel();
+        nextMonthPanel.setPreferredSize(new Dimension(WIDTH / 3 * 2 / 5, HEIGHT / 12));
+        topRightPanel.add(nextMonthPanel);
+
+        JButton nextMonthButton = new JButton("Next month");
+        nextMonthButton.setPreferredSize(new Dimension(WIDTH / 3 * 2 / 5, HEIGHT / 12-10));
+        nextMonthButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        nextMonthButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent e) {
+                Market.getInstance().passMonth();
+            }
+        });
+        nextMonthPanel.add(nextMonthButton);
+
 
         JTabbedPane bottomRightPanel = new JTabbedPane();
         bottomRightPanel.setPreferredSize(new Dimension(WIDTH / 3 * 2, HEIGHT / 12 * 11));
