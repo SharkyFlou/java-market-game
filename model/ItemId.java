@@ -10,7 +10,7 @@ public enum ItemId {
     BIRCH_STICK,
 
     STEEL_INGOT,
-    STEEL_BAR,
+    STEEL_ROD,
 
     STONE_BRICK,
     
