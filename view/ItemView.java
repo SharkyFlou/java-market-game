@@ -2,16 +2,16 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.awt.event.MouseAdapter;
+import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import org.w3c.dom.events.MouseEvent;
@@ -47,7 +47,6 @@ public class ItemView extends JPanel {
 
         quantityOrPriceLabel = new JLabel(Integer.toString(quantityOrPrice) + (isPrice ? "$" : ""));
 
-        
         add(quantityOrPriceLabel, BorderLayout.SOUTH);
 
         // add item image to the center
@@ -55,12 +54,40 @@ public class ItemView extends JPanel {
         add(new JLabel(new ImageIcon(backgroundImage.getScaledInstance(35, 35, Image.SCALE_FAST))),
                 BorderLayout.CENTER);
 
-
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 StatWindow statWindow = new StatWindow(item.getId(), Market.getInstance());
             }
+        });
+
+        setToolTipText(item.getDescription());
+
+        addMouseListener(new MouseListener() {
+                    @Override
+                    public void mouseClicked(java.awt.event.MouseEvent e) {
+                        // TODO Auto-generated method stub
+                    }
+
+                    @Override
+                    public void mousePressed(java.awt.event.MouseEvent e) {
+                        // TODO Auto-generated method stub                    
+                    }
+
+                    @Override
+                    public void mouseReleased(java.awt.event.MouseEvent e) {
+                        // TODO Auto-generated method stub
+                    }
+
+                    @Override
+                    public void mouseEntered(java.awt.event.MouseEvent e) {
+                        setCursor(new Cursor(Cursor.HAND_CURSOR));
+                    }
+
+                    @Override
+                    public void mouseExited(java.awt.event.MouseEvent e) {
+                        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                    }
         });
 
     }

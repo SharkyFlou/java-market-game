@@ -5,13 +5,8 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.util.Dictionary;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 
-import javax.swing.BorderFactory;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -42,8 +37,6 @@ public class InventoryView extends JPanel implements InventoryObserver, WeightOb
         weightLabel = new JLabel();
         updateWeight();
         add(weightLabel, BorderLayout.SOUTH);
-
-        int rows = (int) ItemId.values().length / 3 + 1;
 
         itemsPanel = new JPanel(new GridBagLayout());
         JScrollPane scrollableTextArea = new JScrollPane(itemsPanel);  
@@ -156,10 +149,8 @@ public class InventoryView extends JPanel implements InventoryObserver, WeightOb
         gbc.insets = new Insets(3, 3, 3, 3);
         gbc.gridx = 0;
         gbc.gridy = 0;
-        GridBagLayout layout = (GridBagLayout)itemsPanel.getLayout();
         for (ItemView item : items.values()) {
             itemsPanel.add(item,gbc);
-            layout.setConstraints(item, gbc);
             gbc.gridx++;
             if (gbc.gridx == 3) {
                 gbc.gridx = 0;

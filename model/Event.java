@@ -84,4 +84,8 @@ public class Event {
     public boolean isGoodEvent() {
         return goodEvent;
     }
+
+    public BufferedImage getImage() {
+        return image;
+    }
 }

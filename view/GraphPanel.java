@@ -98,7 +98,6 @@ public class GraphPanel extends JPanel {
                 g.drawLine(spaceFromLeft - 5, heightTemp, spaceFromLeft - 10, heightTemp);
             }
         } else {
-            int y = 0;
             int ySpacing = (yMax - yMin) / 4;
             for (int i = 1; i <= 4; i++) {
                 int heightTemp = -(int) Math.round(( (ySpacing*i*1.0) / (yMax - yMin)) * height) + heightBottom;

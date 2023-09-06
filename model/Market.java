@@ -1,6 +1,9 @@
 package model;
 
 import java.util.List;
+
+import view.EventsView;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -12,8 +15,12 @@ public final class Market {
     
     private HashMap<EventId, Integer> cooldownEvents = new HashMap<EventId, Integer>();
 
+    private EventsView eventsView = null;
+
     private int actualMonth = 0;
     private int monthWithoutEvent = 0;
+
+
     
     private Market() {
         //go for 12 months to generate history without events
@@ -31,36 +38,53 @@ public final class Market {
 
     public void passMonth(){
         actualMonth++;
+        List<EventId> activeEventsToRemove = new ArrayList<EventId>();
         for(EventId eventId : activeEvents.keySet()){
             activeEvents.put(eventId, activeEvents.get(eventId) - 1);
             if(activeEvents.get(eventId) <= 0){
-                activeEvents.remove(eventId);
+                activeEventsToRemove.add(eventId);
             }
         }
+
+        for(EventId eventId : activeEventsToRemove){
+            activeEvents.remove(eventId);
+        }
+
+        List<EventId> cooldownEventsToRemove = new ArrayList<EventId>();
         for(EventId eventId : cooldownEvents.keySet()){
             cooldownEvents.put(eventId, cooldownEvents.get(eventId) - 1);
             if(cooldownEvents.get(eventId) <= 0){
-                cooldownEvents.remove(eventId);
+                cooldownEventsToRemove.add(eventId);
             }
         }
+        for(EventId eventId : cooldownEventsToRemove){
+            cooldownEvents.remove(eventId);
+        }
+
         monthWithoutEvent++;
         if(generateEvent()){
             monthWithoutEvent = 0;
         }
         generateHistoryItem();
+        if(eventsView != null)
+            eventsView.update(actualMonth);
+    }
+
+    public void setEventsView(EventsView eventsView){
+        this.eventsView = eventsView;
     }
 
     //return true if generated an new event, false if not
     private boolean generateEvent(){
         int random = (int) (Math.random() * 100);
-        if(random < 15* monthWithoutEvent){
+        if(random < 150* monthWithoutEvent){
             //create list of all possible events without the ones in cooldown
             List<EventId> possibleEvents = new ArrayList<EventId>();
             EventsInfo eventsInfo = EventsInfo.getInstance();
 
             int totalProbabilities = 0;
             for(EventId eventId : EventId.values()){
-                if(eventsInfo.getEvent(eventId).getCooldown() > actualMonth-11){
+                if(eventsInfo.getEvent(eventId).getUnlockMonth() > actualMonth-13){
                     continue;
                 }
                 if(cooldownEvents.containsKey(eventId)){
@@ -79,6 +103,8 @@ public final class Market {
                     activeEvents.put(eventId, eventsInfo.getEvent(eventId).getDuration());
                     //add event to cooldown events
                     cooldownEvents.put(eventId, eventsInfo.getEvent(eventId).getCooldown());
+                    eventsView.addEvent(eventId);
+                    
                     return true;
                 }
             }
@@ -92,7 +118,6 @@ public final class Market {
 
         //for each item
         for(ItemId itemId : ItemId.values()){
-            Item item = itemsInfo.getItem(itemId);
             //generate number between 0.95 and 1.05
             float random = (float) (Math.random() * 0.1 + 0.95);
             float currentPrice = itemsInfo.getItemPrice(itemId, actualMonth) * random;

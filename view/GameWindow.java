@@ -30,7 +30,7 @@ public class GameWindow extends JFrame {
     private static final java.awt.Color LIGHT_GRAY = new java.awt.Color(240, 240, 240);
     private static final java.awt.Color GRAY = new java.awt.Color(200, 200, 200);
 
-    public GameWindow(InventoryView inventoryView, int width, int height, MoneyView moneyView) {
+    public GameWindow(InventoryView inventoryView, int width, int height, MoneyView moneyView, EventsView eventsView) {
         this.WIDTH = width;
         this.HEIGHT = height;
         setTitle("Market game");
@@ -106,8 +106,9 @@ public class GameWindow extends JFrame {
                 "Here you craft things");
         bottomRightPanel.setMnemonicAt(2, KeyEvent.VK_3);
 
-        JComponent panelEvent = new JPanel();
-        bottomRightPanel.addTab("Event   ", null, panelEvent,
+
+        //event panel
+        bottomRightPanel.addTab("Event   ", null, eventsView,
                 "Here you see the events");
         bottomRightPanel.setMnemonicAt(2, KeyEvent.VK_3);
 
