@@ -17,6 +17,7 @@ import view.GameWindow;
 import view.InventoryView;
 import view.ItemView;
 import view.MoneyView;
+import view.ShopView;
 
 public class Game {
     public Game() {
@@ -31,8 +32,11 @@ public class Game {
         market.setEventsView(eventsView);
 
         MoneyView moneyView = new MoneyView();
+
+        ShopView shopView = new ShopView(inventory);
+        market.setShopView(shopView);
         
-        GameWindow gameWindow = new GameWindow(inventoryView, 800, 600, moneyView, eventsView);
+        GameWindow.getInstance(inventoryView, 800, 600, moneyView, eventsView, shopView);
 
         inventory.addInvObserver(inventoryView);
         inventory.addWeightObserver(inventoryView);

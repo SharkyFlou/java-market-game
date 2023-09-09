@@ -14,13 +14,14 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 
 import model.ItemId;
 import model.Market;
 
-public class GameWindow extends JFrame {
+public final class GameWindow extends JFrame {
+    private static GameWindow gameWindow = null;
+
 
     // dimensions of the window
     private int WIDTH;
@@ -30,7 +31,7 @@ public class GameWindow extends JFrame {
     private static final java.awt.Color LIGHT_GRAY = new java.awt.Color(240, 240, 240);
     private static final java.awt.Color GRAY = new java.awt.Color(200, 200, 200);
 
-    public GameWindow(InventoryView inventoryView, int width, int height, MoneyView moneyView, EventsView eventsView) {
+    private GameWindow(InventoryView inventoryView, int width, int height, MoneyView moneyView, EventsView eventsView, ShopView shopView) {
         this.WIDTH = width;
         this.HEIGHT = height;
         setTitle("Market game");
@@ -89,10 +90,8 @@ public class GameWindow extends JFrame {
         bottomRightPanel.setBorder(BorderFactory.createLineBorder(Color.black));
         rightPanel.add(bottomRightPanel);
 
-        JPanel panelBuy = new JPanel();
 
-
-        bottomRightPanel.addTab("Buy   ", null, panelBuy,
+        bottomRightPanel.addTab("Buy   ", null, shopView,
                 "Here you buy things");
         bottomRightPanel.setMnemonicAt(0, KeyEvent.VK_1);
 
@@ -114,6 +113,20 @@ public class GameWindow extends JFrame {
 
         setVisible(true);
         setLocationRelativeTo(null);
+    }
+
+    public static GameWindow getInstance() {
+        if (gameWindow != null) {
+            return gameWindow;
+        }
+        return null;
+    }
+
+    public static GameWindow getInstance(InventoryView inventoryView, int width, int height, MoneyView moneyView, EventsView eventsView, ShopView shopView){
+        if (gameWindow == null) {
+            gameWindow = new GameWindow(inventoryView, width, height, moneyView, eventsView, shopView);
+        }
+        return gameWindow;
     }
 
 

@@ -43,7 +43,7 @@ public final class EventsInfo {
 
         events[EventId.LAB_GROW_STEEL.ordinal()] = new Event(EventId.LAB_GROW_STEEL, "Lab Grow Steel", "Your lab has found a way to grow steel, the price of the steel goes down a lot", 5, new ItemId[]{ItemId.STEEL_INGOT, ItemId.STEEL_ROD}, 100, 0, 24, 0.8f, 0.8f, true, getImage("img/events/LAB_GROW_STEEL.png"));
 
-        events[EventId.LAB_GROW_STONE.ordinal()] = new Event(EventId.LAB_GROW_STONE, "Lab Grow Sand", "Your lab has found a way to grow stone, the price of the sand goes down a lot", 5, new ItemId[]{ItemId.STONE_BRICK}, 100, 0, 24, 0.8f, 0.8f, true, getImage("img/events/LAB_GROW_STONE.png"));
+        events[EventId.LAB_GROW_STONE.ordinal()] = new Event(EventId.LAB_GROW_STONE, "Lab Grow Stone", "Your lab has found a way to grow stone, the price of the sand goes down a lot", 5, new ItemId[]{ItemId.STONE_BRICK}, 100, 0, 24, 0.8f, 0.8f, true, getImage("img/events/LAB_GROW_STONE.png"));
         
         events[EventId.NEW_DESERT_ISLAND.ordinal()] = new Event(EventId.NEW_DESERT_ISLAND, "New Desert Island", "A new desert island has appeared, the price of the sand goes down a bit", 5, new ItemId[]{ItemId.SAND}, 100, 0, 24, 0.9f, 0.9f, true, getImage("img/events/NEW_DESERT_ISLAND.png"));
     

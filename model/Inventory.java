@@ -5,12 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 
 import view.InventoryView;
-import view.MoneyView;
+import view.ItemView;
 
 public class Inventory {
     private HashMap<ItemId, Integer> items;
     private int money;
     private int maxWeight;
+    private int currentWeight;
     private List<InventoryObserver> inventoryObservers;
     private List<MoneyObserver> moneyObservers;
     private List<WeightObserver> weightObservers;
@@ -20,6 +21,7 @@ public class Inventory {
     public Inventory(int maxWeight) {
         this.items = new HashMap<ItemId, Integer>();
         this.money = 0;
+        this.currentWeight = 0;
         this.maxWeight = maxWeight;
 
         inventoryObservers = new ArrayList<InventoryObserver>();
@@ -47,12 +49,11 @@ public class Inventory {
         return maxWeight;
     }
 
-    public void updateItem(ItemId id, int quantity) {
-        int currentQuantity = quantity;
+    public void updateItem(ItemId id, int quantity) {;
         if (items.containsKey(id)) {
             //if item exists, add quantity
-            currentQuantity += items.get(id); 
-            items.put(id, currentQuantity);
+            quantity += items.get(id); 
+            items.put(id, quantity);
             if(items.get(id) <= 0){
                 //if quantity equals 0 or less, remove item
                 items.remove(id);
@@ -61,7 +62,16 @@ public class Inventory {
             //if item doesn't exist, add item
             items.put(id, quantity);
         }
-        notifyInvObservers(id, currentQuantity);
+        calculateCurrentWeight();
+        notifyInvObservers(id, quantity);
+    }
+
+    private void calculateCurrentWeight() {
+        currentWeight = 0;
+        for (ItemId itemId : items.keySet()) {
+            currentWeight += items.get(itemId) * ItemsInfo.getInstance().getItem(itemId).getWeight();
+        }
+        notifyWeightObservers();
     }
 
 
@@ -81,9 +91,15 @@ public class Inventory {
         notifyWeightObservers();
     }
 
-    public void notifyWeightObservers() {
+    public void notifyMaxWeightObservers() {
         for (WeightObserver weightObserver : this.weightObservers) {
             weightObserver.updateMaxWeight(this.maxWeight);
+        }
+    }
+
+    public void notifyWeightObservers() {
+        for (WeightObserver weightObserver : this.weightObservers) {
+            weightObserver.updateWeight(this.currentWeight);
         }
     }
 

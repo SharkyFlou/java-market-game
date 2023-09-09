@@ -3,6 +3,7 @@ package model;
 import java.util.List;
 
 import view.EventsView;
+import view.ShopView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,6 +17,8 @@ public final class Market {
     private HashMap<EventId, Integer> cooldownEvents = new HashMap<EventId, Integer>();
 
     private EventsView eventsView = null;
+
+    private ShopView shopView = null;
 
     private int actualMonth = 0;
     private int monthWithoutEvent = 0;
@@ -68,16 +71,23 @@ public final class Market {
         generateHistoryItem();
         if(eventsView != null)
             eventsView.update(actualMonth);
+
+        if(shopView != null)
+            shopView.updateShop();
     }
 
     public void setEventsView(EventsView eventsView){
         this.eventsView = eventsView;
     }
 
+    public void setShopView(ShopView shopView){
+        this.shopView = shopView;
+    }
+
     //return true if generated an new event, false if not
     private boolean generateEvent(){
         int random = (int) (Math.random() * 100);
-        if(random < 150* monthWithoutEvent){
+        if(random < 15* monthWithoutEvent){
             //create list of all possible events without the ones in cooldown
             List<EventId> possibleEvents = new ArrayList<EventId>();
             EventsInfo eventsInfo = EventsInfo.getInstance();
@@ -150,7 +160,7 @@ public final class Market {
     }
 
     public int getItemPrice(ItemId itemId){
-        return getItemPrice(itemId, actualMonth);
+        return getItemPrice(itemId, actualMonth-1);
     }
 
     public int getItemPrice(ItemId itemId, int month){

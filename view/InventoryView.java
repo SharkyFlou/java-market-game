@@ -22,6 +22,7 @@ public class InventoryView extends JPanel implements InventoryObserver, WeightOb
     private int maxWeight;
     private JLabel weightLabel;
     private JPanel itemsPanel;
+    private int weight;
 
     private static final java.awt.Color GRAY = new java.awt.Color(200, 200, 200);
 
@@ -87,16 +88,8 @@ public class InventoryView extends JPanel implements InventoryObserver, WeightOb
         updateWeight();
     }
 
-    private int calculateCurrentWeight() {
-        int currentWeight = 0;
-        for (ItemView item : items.values()) {
-            currentWeight += item.getQuantityOrPrice() * ItemsInfo.getInstance().getItem(item.getItem()).getWeight();
-        }
-        return currentWeight;
-    }
-
     private void updateWeight() {
-        weightLabel.setText("Weight: " + calculateCurrentWeight() + "/" + maxWeight);
+        weightLabel.setText("Weight: " + weight + "/" + maxWeight);
     }
 
     private GridBagConstraints findNextSpot(){
@@ -160,6 +153,10 @@ public class InventoryView extends JPanel implements InventoryObserver, WeightOb
             
         }
 
+    }
+
+    public void updateWeight(int weight) {
+        this.weight=weight;
     }
 
 }

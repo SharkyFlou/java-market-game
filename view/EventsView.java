@@ -64,7 +64,6 @@ public class EventsView extends JPanel{
         }
         if(needToRedraw){
             for (EventId eventId : eventsToRemove) {
-                System.out.println("Remove visualy event : "+eventId);
                 events.remove(eventId);
             }
             redrawAllEvents();
