@@ -38,13 +38,13 @@ public final class CraftsInfo {
 
         // steel rod
         LinkedHashMap<ItemId, Integer> steelRod = new LinkedHashMap<ItemId, Integer>();
-        steelRod.put(ItemId.STEEL_ROD, 100);
+        steelRod.put(ItemId.STEEL_ROD, 40);
         steelRod.put(ItemId.STEEL_INGOT, 1);
         craftsInfo.add(steelRod);
 
         // glass pane
         LinkedHashMap<ItemId, Integer> glassPane = new LinkedHashMap<ItemId, Integer>();
-        glassPane.put(ItemId.GLASS_PANE, 20);
+        glassPane.put(ItemId.GLASS_PANE, 4);
         glassPane.put(ItemId.SAND, 1);
         craftsInfo.add(glassPane);
 
@@ -61,7 +61,7 @@ public final class CraftsInfo {
         oakWindow.put(ItemId.OAK_WINDOW, 1);
         oakWindow.put(ItemId.OAK_PLANK, 2);
         oakWindow.put(ItemId.OAK_STICK, 4);
-        glassPane.put(ItemId.GLASS_PANE, 4);
+        oakWindow.put(ItemId.GLASS_PANE, 4);
         craftsInfo.add(oakWindow);
         
 
@@ -104,7 +104,7 @@ public final class CraftsInfo {
         birchWindow.put(ItemId.BIRCH_WINDOW, 1);
         birchWindow.put(ItemId.BIRCH_PLANK, 2);
         birchWindow.put(ItemId.BIRCH_STICK, 4);
-        glassPane.put(ItemId.GLASS_PANE, 4);
+        birchWindow.put(ItemId.GLASS_PANE, 4);
         craftsInfo.add(birchWindow);
         
 
@@ -136,32 +136,32 @@ public final class CraftsInfo {
         // stone door
         LinkedHashMap<ItemId, Integer> stoneDoor = new LinkedHashMap<ItemId, Integer>();
         stoneDoor.put(ItemId.STONE_DOOR, 1);
-        stoneDoor.put(ItemId.STONE_BRICK, 8);
-        stoneDoor.put(ItemId.STEEL_ROD, 4);
+        stoneDoor.put(ItemId.STONE_BRICK, 4);
+        stoneDoor.put(ItemId.STEEL_ROD, 6);
         craftsInfo.add(stoneDoor);
         
 
         // stone window
         LinkedHashMap<ItemId, Integer> stoneWindow = new LinkedHashMap<ItemId, Integer>();
         stoneWindow.put(ItemId.STONE_WINDOW, 1);
-        stoneWindow.put(ItemId.STONE_BRICK, 2);
-        stoneWindow.put(ItemId.STEEL_ROD, 4);
-        glassPane.put(ItemId.GLASS_PANE, 4);
+        stoneWindow.put(ItemId.STONE_BRICK, 1);
+        stoneWindow.put(ItemId.STEEL_ROD, 6);
+        stoneWindow.put(ItemId.GLASS_PANE, 4);
         craftsInfo.add(stoneWindow);
         
 
         // stone chair
         LinkedHashMap<ItemId, Integer> stoneChair = new LinkedHashMap<ItemId, Integer>();
         stoneChair.put(ItemId.STONE_CHAIR, 1);
-        stoneChair.put(ItemId.STONE_BRICK, 2);
+        stoneChair.put(ItemId.STONE_BRICK, 1);
         stoneChair.put(ItemId.STEEL_ROD, 12);
         craftsInfo.add(stoneChair);
 
         // stone table
         LinkedHashMap<ItemId, Integer> stoneTable = new LinkedHashMap<ItemId, Integer>();
         stoneTable.put(ItemId.STONE_TABLE, 1);
-        stoneTable.put(ItemId.STONE_BRICK, 12);
-        stoneTable.put(ItemId.STEEL_ROD, 4);
+        stoneTable.put(ItemId.STONE_BRICK,6);
+        stoneTable.put(ItemId.STEEL_ROD, 8);
         craftsInfo.add(stoneTable);
         
 

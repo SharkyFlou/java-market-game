@@ -27,7 +27,7 @@ public class Game {
         ItemsInfo itemsInfo = ItemsInfo.getInstance();
         Market market = Market.getInstance();
 
-        Inventory inventory = new Inventory(10000);
+        Inventory inventory = new Inventory(15000);
 
         InventoryView inventoryView = new InventoryView(new LinkedHashMap<ItemId, ItemView>(), inventory.getMaxWeight(), 800/3, 600);
         EventsView eventsView = new EventsView();
@@ -55,10 +55,9 @@ public class Game {
         inventory.addWeightObserver(inventoryView);
         inventory.addMoneyObserver(moneyView);
 
-        inventory.updateItem(ItemId.BIRCH_LOG, 10);
-        inventory.updateItem(ItemId.OAK_LOG, 10);
-        inventory.updateItem(ItemId.BIRCH_PLANK, 20);
-        inventory.updateItem(ItemId.OAK_PLANK, 20);
+        inventory.updateItem(ItemId.BIRCH_LOG, 2);
+        inventory.updateItem(ItemId.BIRCH_PLANK, 10);
+        inventory.updateItem(ItemId.BIRCH_STICK, 20);
 
         inventory.addMoney(30000);
     }

@@ -16,39 +16,39 @@ public final class ItemsInfo {
     private ItemsInfo(){
         //all items
         items = new Item[ItemId.values().length];
-        items[ItemId.OAK_LOG.ordinal()] = new Item(ItemId.OAK_LOG, "Oak Log", "A log from an oak tree", 10, true, getImage("img/items/OAK_LOG.png"));
-        items[ItemId.OAK_PLANK.ordinal()] = new Item(ItemId.OAK_PLANK, "Oak Plank", "A plank made from an oak log", 10, false, getImage("img/items/OAK_PLANK.png"));
-        items[ItemId.OAK_STICK.ordinal()] = new Item(ItemId.OAK_STICK, "Oak Stick", "A stick made from an oak log", 10, false, getImage("img/items/OAK_STICK.png"));
+        items[ItemId.OAK_LOG.ordinal()] = new Item(ItemId.OAK_LOG, "Oak Log", "A log from an oak tree", 1000, true, getImage("img/items/OAK_LOG.png"));
+        items[ItemId.OAK_PLANK.ordinal()] = new Item(ItemId.OAK_PLANK, "Oak Plank", "A plank made from an oak log", 50, false, getImage("img/items/OAK_PLANK.png"));
+        items[ItemId.OAK_STICK.ordinal()] = new Item(ItemId.OAK_STICK, "Oak Stick", "A stick made from an oak log", 25, false, getImage("img/items/OAK_STICK.png"));
 
-        items[ItemId.BIRCH_LOG.ordinal()] = new Item(ItemId.BIRCH_LOG, "Birch Log", "A log from a birch tree", 10, true, getImage("img/items/BIRCH_LOG.png"));
-        items[ItemId.BIRCH_PLANK.ordinal()] = new Item(ItemId.BIRCH_PLANK, "Birch Plank", "A plank made from a birch log", 10, false, getImage("img/items/BIRCH_PLANK.png"));
-        items[ItemId.BIRCH_STICK.ordinal()] = new Item(ItemId.BIRCH_STICK, "Birch Stick", "A stick made from a birch log", 10, false, getImage("img/items/BIRCH_STICK.png"));
+        items[ItemId.BIRCH_LOG.ordinal()] = new Item(ItemId.BIRCH_LOG, "Birch Log", "A log from a birch tree", 1000, true, getImage("img/items/BIRCH_LOG.png"));
+        items[ItemId.BIRCH_PLANK.ordinal()] = new Item(ItemId.BIRCH_PLANK, "Birch Plank", "A plank made from a birch log", 50, false, getImage("img/items/BIRCH_PLANK.png"));
+        items[ItemId.BIRCH_STICK.ordinal()] = new Item(ItemId.BIRCH_STICK, "Birch Stick", "A stick made from a birch log", 25, false, getImage("img/items/BIRCH_STICK.png"));
 
-        items[ItemId.STEEL_INGOT.ordinal()] = new Item(ItemId.STEEL_INGOT, "Steel Ingot", "A steel ingot", 10, true, getImage("img/items/STEEL_INGOT.png"));
-        items[ItemId.STEEL_ROD.ordinal()] = new Item(ItemId.STEEL_ROD, "Steel Bar", "A steel bar", 10, false, getImage("img/items/STEEL_ROD.png"));
+        items[ItemId.STEEL_INGOT.ordinal()] = new Item(ItemId.STEEL_INGOT, "Steel Ingot", "A steel ingot", 2000, true, getImage("img/items/STEEL_INGOT.png"));
+        items[ItemId.STEEL_ROD.ordinal()] = new Item(ItemId.STEEL_ROD, "Steel Bar", "A steel bar", 50, false, getImage("img/items/STEEL_ROD.png"));
 
-        items[ItemId.STONE_BRICK.ordinal()] = new Item(ItemId.STONE_BRICK, "Stone Brick", "A stone brick", 10, true, getImage("img/items/STONE_BRICK.png"));
+        items[ItemId.STONE_BRICK.ordinal()] = new Item(ItemId.STONE_BRICK, "Stone Brick", "A stone brick", 500, true, getImage("img/items/STONE_BRICK.png"));
         
-        items[ItemId.SAND.ordinal()] = new Item(ItemId.SAND, "Sand", "A pile of sand", 10, true, getImage("img/items/SAND.png"));
-        items[ItemId.GLASS_PANE.ordinal()] = new Item(ItemId.GLASS_PANE, "Glass Pane", "A glass pane", 10, false, getImage("img/items/GLASS_PANE.png"));
+        items[ItemId.SAND.ordinal()] = new Item(ItemId.SAND, "Sand", "A pile of sand", 100, true, getImage("img/items/SAND.png"));
+        items[ItemId.GLASS_PANE.ordinal()] = new Item(ItemId.GLASS_PANE, "Glass Pane", "A glass pane", 25, false, getImage("img/items/GLASS_PANE.png"));
 
-        items[ItemId.OAK_DOOR.ordinal()] = new Item(ItemId.OAK_DOOR, "Oak Door", "An oak door", 10, false, getImage("img/items/OAK_DOOR.png"));
-        items[ItemId.OAK_WINDOW.ordinal()] = new Item(ItemId.OAK_WINDOW, "Oak Window", "An oak window", 10, false, getImage("img/items/OAK_WINDOW.png"));
-        items[ItemId.OAK_CHAIR.ordinal()] = new Item(ItemId.OAK_CHAIR, "Oak Chair", "An oak chair", 10, false, getImage("img/items/OAK_CHAIR.png"));
-        items[ItemId.OAK_TABLE.ordinal()] = new Item(ItemId.OAK_TABLE, "Oak Table", "An oak table", 10, false, getImage("img/items/OAK_TABLE.png"));
-        items[ItemId.OAK_SET.ordinal()] = new Item(ItemId.OAK_SET, "Oak Set", "A set of oak furniture", 10, false, getImage("img/items/OAK_SET.png"));
+        items[ItemId.OAK_DOOR.ordinal()] = new Item(ItemId.OAK_DOOR, "Oak Door", "An oak door", 500, false, getImage("img/items/OAK_DOOR.png"));
+        items[ItemId.OAK_WINDOW.ordinal()] = new Item(ItemId.OAK_WINDOW, "Oak Window", "An oak window", 300, false, getImage("img/items/OAK_WINDOW.png"));
+        items[ItemId.OAK_CHAIR.ordinal()] = new Item(ItemId.OAK_CHAIR, "Oak Chair", "An oak chair", 400, false, getImage("img/items/OAK_CHAIR.png"));
+        items[ItemId.OAK_TABLE.ordinal()] = new Item(ItemId.OAK_TABLE, "Oak Table", "An oak table", 700, false, getImage("img/items/OAK_TABLE.png"));
+        items[ItemId.OAK_SET.ordinal()] = new Item(ItemId.OAK_SET, "Oak Set", "A set of oak furniture", 3400, false, getImage("img/items/OAK_SET.png"));
 
-        items[ItemId.BIRCH_DOOR.ordinal()] = new Item(ItemId.BIRCH_DOOR, "Birch Door", "A birch door", 10, false, getImage("img/items/BIRCH_DOOR.png"));
-        items[ItemId.BIRCH_WINDOW.ordinal()] = new Item(ItemId.BIRCH_WINDOW, "Birch Window", "A birch window", 10, false, getImage("img/items/BIRCH_WINDOW.png"));
-        items[ItemId.BIRCH_CHAIR.ordinal()] = new Item(ItemId.BIRCH_CHAIR, "Birch Chair", "A birch chair", 10, false, getImage("img/items/BIRCH_CHAIR.png"));
-        items[ItemId.BIRCH_TABLE.ordinal()] = new Item(ItemId.BIRCH_TABLE, "Birch Table", "A birch table", 10, false, getImage("img/items/BIRCH_TABLE.png"));
-        items[ItemId.BIRCH_SET.ordinal()] = new Item(ItemId.BIRCH_SET, "Birch Set", "A set of birch furniture", 10, false, getImage("img/items/BIRCH_SET.png"));
+        items[ItemId.BIRCH_DOOR.ordinal()] = new Item(ItemId.BIRCH_DOOR, "Birch Door", "A birch door", 500, false, getImage("img/items/BIRCH_DOOR.png"));
+        items[ItemId.BIRCH_WINDOW.ordinal()] = new Item(ItemId.BIRCH_WINDOW, "Birch Window", "A birch window", 300, false, getImage("img/items/BIRCH_WINDOW.png"));
+        items[ItemId.BIRCH_CHAIR.ordinal()] = new Item(ItemId.BIRCH_CHAIR, "Birch Chair", "A birch chair", 400, false, getImage("img/items/BIRCH_CHAIR.png"));
+        items[ItemId.BIRCH_TABLE.ordinal()] = new Item(ItemId.BIRCH_TABLE, "Birch Table", "A birch table", 700, false, getImage("img/items/BIRCH_TABLE.png"));
+        items[ItemId.BIRCH_SET.ordinal()] = new Item(ItemId.BIRCH_SET, "Birch Set", "A set of birch furniture", 3400, false, getImage("img/items/BIRCH_SET.png"));
 
-        items[ItemId.STONE_DOOR.ordinal()] = new Item(ItemId.STONE_DOOR, "Stone Door", "A stone door", 10, false, getImage("img/items/STONE_DOOR.png"));
-        items[ItemId.STONE_WINDOW.ordinal()] = new Item(ItemId.STONE_WINDOW, "Stone Window", "A stone window", 10, false, getImage("img/items/STONE_WINDOW.png"));
-        items[ItemId.STONE_CHAIR.ordinal()] = new Item(ItemId.STONE_CHAIR, "Stone Chair", "A stone chair", 10, false, getImage("img/items/STONE_CHAIR.png"));
-        items[ItemId.STONE_TABLE.ordinal()] = new Item(ItemId.STONE_TABLE, "Stone Table", "A stone table", 10, false, getImage("img/items/STONE_TABLE.png"));
-        items[ItemId.STONE_SET.ordinal()] = new Item(ItemId.STONE_SET, "Stone Set", "A set of stone furniture", 10, false, getImage("img/items/STONE_SET.png"));
+        items[ItemId.STONE_DOOR.ordinal()] = new Item(ItemId.STONE_DOOR, "Stone Door", "A stone door", 2300, false, getImage("img/items/STONE_DOOR.png"));
+        items[ItemId.STONE_WINDOW.ordinal()] = new Item(ItemId.STONE_WINDOW, "Stone Window", "A stone window", 900, false, getImage("img/items/STONE_WINDOW.png"));
+        items[ItemId.STONE_CHAIR.ordinal()] = new Item(ItemId.STONE_CHAIR, "Stone Chair", "A stone chair", 1100, false, getImage("img/items/STONE_CHAIR.png"));
+        items[ItemId.STONE_TABLE.ordinal()] = new Item(ItemId.STONE_TABLE, "Stone Table", "A stone table", 3400, false, getImage("img/items/STONE_TABLE.png"));
+        items[ItemId.STONE_SET.ordinal()] = new Item(ItemId.STONE_SET, "Stone Set", "A set of stone furniture", 11900, false, getImage("img/items/STONE_SET.png"));
     
         //all items prices on 12 months
 
@@ -62,21 +62,21 @@ public final class ItemsInfo {
         allItemsPrices.put(ItemId.BIRCH_STICK, new int[]{5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 7}); //40 per log
 
         allItemsPrices.put(ItemId.STEEL_INGOT, new int[]{1500, 1500, 1490, 1485, 1475, 1490, 1495, 1500, 1500, 1500, 1505, 1520}); //~ 1000kg
-        allItemsPrices.put(ItemId.STEEL_ROD, new int[]{15, 15, 15, 15, 15, 15, 15, 16, 16, 15, 15,15}); //100 per ingot
+        allItemsPrices.put(ItemId.STEEL_ROD, new int[]{35,38,38,38,38,38,38,38,38,38,38,36}); //40 per ingot
 
         allItemsPrices.put(ItemId.STONE_BRICK, new int[]{1300, 1300, 1300, 1300, 1290, 1280, 1295, 1300, 1300, 1300, 1300, 1300}); //~ 1 m3
 
 
         //made automatically, has to be checked !!
 
-        allItemsPrices.put(ItemId.SAND, new int[]{10, 10, 10, 10, 10, 10, 10, 10, 10, 11, 11, 12}); //~ 1 m3
-        allItemsPrices.put(ItemId.GLASS_PANE, new int[]{10, 10, 10, 10, 10, 10, 10, 10, 10, 11, 11, 12}); //10 per m3
+        allItemsPrices.put(ItemId.SAND, new int[]{200, 200, 200, 200, 200, 200, 200, 200, 200, 210, 210, 220}); //~ 1 m3
+        allItemsPrices.put(ItemId.GLASS_PANE, new int[]{24, 40, 40, 40, 40, 40, 40, 40, 40, 42, 43, 46}); //4 per m3
 
-        allItemsPrices.put(ItemId.OAK_DOOR, new int[]{100, 100, 100, 100, 100, 100, 100, 100, 100, 110, 110, 120});
-        allItemsPrices.put(ItemId.OAK_WINDOW, new int[]{80, 80, 80, 80, 80, 80, 80, 80, 80, 88, 88, 96});
-        allItemsPrices.put(ItemId.OAK_CHAIR, new int[]{50, 50, 50, 50, 50, 50, 50, 50, 50, 55, 55, 60});
-        allItemsPrices.put(ItemId.OAK_TABLE, new int[]{100, 100, 100, 100, 100, 100, 100, 100, 100, 110, 110, 120});
-        allItemsPrices.put(ItemId.OAK_SET, new int[]{330, 330, 330, 330, 330, 330, 330, 330, 330, 363, 363, 396});
+        allItemsPrices.put(ItemId.OAK_DOOR, new int[]{220, 220, 220, 220, 220, 225, 230, 240, 230, 220, 210, 210});
+        allItemsPrices.put(ItemId.OAK_WINDOW, new int[]{270, 270, 265, 265, 268, 260, 265, 255, 250, 250, 260, 265});
+        allItemsPrices.put(ItemId.OAK_CHAIR, new int[]{170, 170, 170, 170, 170, 170, 170, 170, 170, 175, 175, 175});
+        allItemsPrices.put(ItemId.OAK_TABLE, new int[]{300, 300, 300, 300, 300, 300, 300, 300, 320, 330, 320, 320});
+        allItemsPrices.put(ItemId.OAK_SET, new int[]{2600, 2600, 2550, 2500, 2400, 2400, 2400, 2400, 2400, 2400, 2400, 2400});
 
         allItemsPrices.put(ItemId.BIRCH_DOOR, new int[]{50, 50, 50, 50, 50, 50, 50, 50, 50, 55, 55, 60});
         allItemsPrices.put(ItemId.BIRCH_WINDOW, new int[]{40, 40, 40, 40, 40, 40, 40, 40, 40, 44, 44, 48});
