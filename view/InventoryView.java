@@ -82,6 +82,7 @@ public class InventoryView extends JPanel implements InventoryObserver, WeightOb
             itemsPanel.add(itemView, gbc);
         }
         updateWeight();
+        itemsPanel.updateUI();
     }
 
     public void updateMaxWeight(int maxWeight) {

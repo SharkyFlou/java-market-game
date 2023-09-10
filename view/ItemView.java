@@ -9,13 +9,10 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseListener;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -32,6 +29,7 @@ public class ItemView extends JPanel {
     private JLabel quantityOrPriceLabel;
     private ItemState itemState;
     private ShopView shopView;
+    private SalesView salesView;
 
     public ItemView(Item item, int quantityOrPrice, ItemState itemState) {
         this.item = item;
@@ -56,10 +54,10 @@ public class ItemView extends JPanel {
                 BorderLayout.CENTER);
 
         // add item price or quantity to the south
-        if (itemState == ItemState.INVENTORY || itemState == ItemState.SHOP || itemState == ItemState.TO_BE_SHIPPED) {
-            quantityOrPriceLabel = new JLabel(Integer.toString(quantityOrPrice) + ((itemState == ItemState.SHOP) ? "$" : ""));
+        if (itemState == ItemState.INVENTORY || itemState == ItemState.SHOP || itemState == ItemState.TO_BE_SHIPPED || itemState == ItemState.SELL) {
+            quantityOrPriceLabel = new JLabel(Integer.toString(quantityOrPrice) + ((itemState == ItemState.SHOP || itemState == ItemState.SELL) ? "$" : ""));
         }
-        else if(itemState == ItemState.CRAFT){
+        else if(itemState == ItemState.CRAFT || itemState == ItemState.SELLING){
             quantityOrPriceLabel = new JLabel("?/"+Integer.toString(quantityOrPrice));
         }
         
@@ -108,7 +106,6 @@ public class ItemView extends JPanel {
 
     public void setShopView(ShopView shopView) {
         this.shopView = shopView;
-
         // if in the item to be shipped
         if (itemState == ItemState.TO_BE_SHIPPED && getMouseListeners().length > 0) {
             removeMouseListener(getMouseListeners()[0]);
@@ -119,7 +116,19 @@ public class ItemView extends JPanel {
                 }
             });
         }
+    }
 
+    public void setSalesView(SalesView salesView) {
+        this.salesView = salesView;
+        // if in the item to be sold
+        if (itemState == ItemState.SELL && getMouseListeners().length > 0) {
+            removeMouseListener(getMouseListeners()[0]);
+            addMouseListener(new MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent e) {
+                    salesView.setSellingItem(getItem());
+                }
+            });
+        }
     }
 
     public void updateQuantityOrPrice(int quantityOrPrice) {

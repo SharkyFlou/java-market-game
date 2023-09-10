@@ -18,6 +18,7 @@ import view.GameWindow;
 import view.InventoryView;
 import view.ItemView;
 import view.MoneyView;
+import view.SalesView;
 import view.ShopView;
 
 public class Game {
@@ -26,7 +27,7 @@ public class Game {
         ItemsInfo itemsInfo = ItemsInfo.getInstance();
         Market market = Market.getInstance();
 
-        Inventory inventory = new Inventory(900);
+        Inventory inventory = new Inventory(10000);
 
         InventoryView inventoryView = new InventoryView(new LinkedHashMap<ItemId, ItemView>(), inventory.getMaxWeight(), 800/3, 600);
         EventsView eventsView = new EventsView();
@@ -40,8 +41,11 @@ public class Game {
         CraftsView craftsView = new CraftsView(inventory);
         inventory.addInvObserver(craftsView);
 
+        SalesView salesView = new SalesView(inventory);
+        inventory.addInvObserver(salesView);
+
         
-        GameWindow.getInstance(inventoryView, 800, 600, moneyView, eventsView, shopView,craftsView);
+        GameWindow.getInstance(inventoryView, 800, 600, moneyView, eventsView, shopView,craftsView, salesView);
 
         inventory.addWeightObserver(shopView);
 

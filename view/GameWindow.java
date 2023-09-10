@@ -31,7 +31,7 @@ public final class GameWindow extends JFrame {
     private static final java.awt.Color LIGHT_GRAY = new java.awt.Color(240, 240, 240);
     private static final java.awt.Color GRAY = new java.awt.Color(200, 200, 200);
 
-    private GameWindow(InventoryView inventoryView, int width, int height, MoneyView moneyView, EventsView eventsView, ShopView shopView, CraftsView craftsView) {
+    private GameWindow(InventoryView inventoryView, int width, int height, MoneyView moneyView, EventsView eventsView, ShopView shopView, CraftsView craftsView, SalesView salesView) {
         this.WIDTH = width;
         this.HEIGHT = height;
         setTitle("Market game");
@@ -101,9 +101,7 @@ public final class GameWindow extends JFrame {
         bottomRightPanel.setMnemonicAt(1, KeyEvent.VK_2);
 
 
-
-        JComponent panelSale = new JPanel();
-        bottomRightPanel.addTab("Sell   ", null, panelSale,
+        bottomRightPanel.addTab("Sell   ", null, salesView,
                 "Here you sell things");
         bottomRightPanel.setMnemonicAt(2, KeyEvent.VK_3);
 
@@ -126,9 +124,9 @@ public final class GameWindow extends JFrame {
         return null;
     }
 
-    public static GameWindow getInstance(InventoryView inventoryView, int width, int height, MoneyView moneyView, EventsView eventsView, ShopView shopView, CraftsView craftsView){
+    public static GameWindow getInstance(InventoryView inventoryView, int width, int height, MoneyView moneyView, EventsView eventsView, ShopView shopView, CraftsView craftsView, SalesView salesView){
         if (gameWindow == null) {
-            gameWindow = new GameWindow(inventoryView, width, height, moneyView, eventsView, shopView, craftsView);
+            gameWindow = new GameWindow(inventoryView, width, height, moneyView, eventsView, shopView, craftsView, salesView);
         }
         return gameWindow;
     }

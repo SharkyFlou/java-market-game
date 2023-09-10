@@ -5,5 +5,6 @@ public enum ItemState {
     SHOP,
     TO_BE_SHIPPED,
     CRAFT,
-    SELL
+    SELL,
+    SELLING
 }
