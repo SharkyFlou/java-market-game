@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import view.InventoryView;
-import view.ItemView;
 
 public class Inventory {
     private HashMap<ItemId, Integer> items;
@@ -15,8 +14,6 @@ public class Inventory {
     private List<InventoryObserver> inventoryObservers;
     private List<MoneyObserver> moneyObservers;
     private List<WeightObserver> weightObservers;
-
-
 
     public Inventory(int maxWeight) {
         this.items = new HashMap<ItemId, Integer>();
@@ -33,8 +30,8 @@ public class Inventory {
         this.inventoryObservers.add(invObserver);
     }
 
-    public void addWeightObserver(InventoryView inventoryView) {
-        this.weightObservers.add(inventoryView);
+    public void addWeightObserver(WeightObserver weightObserver) {
+        this.weightObservers.add(weightObserver);
     }
 
     public HashMap<ItemId, Integer> getItems() {
@@ -88,7 +85,7 @@ public class Inventory {
 
     public void setMaxWeight(int maxWeight) {
         this.maxWeight = maxWeight;
-        notifyWeightObservers();
+        notifyMaxWeightObservers();
     }
 
     public void notifyMaxWeightObservers() {
@@ -113,5 +110,14 @@ public class Inventory {
         this.moneyObservers.add(moneyObserver);
     }
 
+    public int getCurrentWeight() {
+        return currentWeight;
+    }
 
+    public int getItemQuantity(ItemId itemId) {
+        if (items.containsKey(itemId)) {
+            return items.get(itemId);
+        }
+        return 0;
+    }
 }

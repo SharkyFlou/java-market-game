@@ -73,7 +73,7 @@ public final class Market {
             eventsView.update(actualMonth);
 
         if(shopView != null)
-            shopView.updateShop();
+            shopView.nextMonth();
     }
 
     public void setEventsView(EventsView eventsView){

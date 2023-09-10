@@ -62,7 +62,7 @@ public final class ItemsInfo {
         allItemsPrices.put(ItemId.BIRCH_STICK, new int[]{5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 7}); //40 per log
 
         allItemsPrices.put(ItemId.STEEL_INGOT, new int[]{1500, 1500, 1490, 1485, 1475, 1490, 1495, 1500, 1500, 1500, 1505, 1520}); //~ 1000kg
-        allItemsPrices.put(ItemId.STEEL_ROD, new int[]{10, 10, 10, 10, 10, 10, 10, 11, 11, 10, 10, 10}); //150 per ingot
+        allItemsPrices.put(ItemId.STEEL_ROD, new int[]{15, 15, 15, 15, 15, 15, 15, 16, 16, 15, 15,15}); //100 per ingot
 
         allItemsPrices.put(ItemId.STONE_BRICK, new int[]{1300, 1300, 1300, 1300, 1290, 1280, 1295, 1300, 1300, 1300, 1300, 1300}); //~ 1 m3
 

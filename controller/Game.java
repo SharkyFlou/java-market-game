@@ -12,6 +12,7 @@ import model.Inventory;
 import model.ItemId;
 import model.ItemsInfo;
 import model.Market;
+import view.CraftsView;
 import view.EventsView;
 import view.GameWindow;
 import view.InventoryView;
@@ -35,8 +36,16 @@ public class Game {
 
         ShopView shopView = new ShopView(inventory);
         market.setShopView(shopView);
+
+        CraftsView craftsView = new CraftsView(inventory);
+        inventory.addInvObserver(craftsView);
+
         
-        GameWindow.getInstance(inventoryView, 800, 600, moneyView, eventsView, shopView);
+        GameWindow.getInstance(inventoryView, 800, 600, moneyView, eventsView, shopView,craftsView);
+
+        inventory.addWeightObserver(shopView);
+
+
 
         inventory.addInvObserver(inventoryView);
         inventory.addWeightObserver(inventoryView);

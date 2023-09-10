@@ -14,6 +14,7 @@ import java.awt.Insets;
 
 import model.InventoryObserver;
 import model.ItemId;
+import model.ItemState;
 import model.ItemsInfo;
 import model.WeightObserver;
 
@@ -73,7 +74,7 @@ public class InventoryView extends JPanel implements InventoryObserver, WeightOb
             }
         } else {
             // add item
-            ItemView itemView = new ItemView(ItemsInfo.getInstance().getItem(id), quantity, false);
+            ItemView itemView = new ItemView(ItemsInfo.getInstance().getItem(id), quantity, ItemState.INVENTORY);
             items.put(id, itemView);
             GridBagConstraints gbc = findNextSpot();
             gbc.fill = GridBagConstraints.HORIZONTAL;

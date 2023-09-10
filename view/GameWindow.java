@@ -31,7 +31,7 @@ public final class GameWindow extends JFrame {
     private static final java.awt.Color LIGHT_GRAY = new java.awt.Color(240, 240, 240);
     private static final java.awt.Color GRAY = new java.awt.Color(200, 200, 200);
 
-    private GameWindow(InventoryView inventoryView, int width, int height, MoneyView moneyView, EventsView eventsView, ShopView shopView) {
+    private GameWindow(InventoryView inventoryView, int width, int height, MoneyView moneyView, EventsView eventsView, ShopView shopView, CraftsView craftsView) {
         this.WIDTH = width;
         this.HEIGHT = height;
         setTitle("Market game");
@@ -95,15 +95,19 @@ public final class GameWindow extends JFrame {
                 "Here you buy things");
         bottomRightPanel.setMnemonicAt(0, KeyEvent.VK_1);
 
+
+        bottomRightPanel.addTab("Craft   ", null, craftsView,
+                "Here you craft things");
+        bottomRightPanel.setMnemonicAt(1, KeyEvent.VK_2);
+
+
+
         JComponent panelSale = new JPanel();
         bottomRightPanel.addTab("Sell   ", null, panelSale,
                 "Here you sell things");
-        bottomRightPanel.setMnemonicAt(1, KeyEvent.VK_2);
-
-        JComponent panelCraft = new JPanel();
-        bottomRightPanel.addTab("Craft   ", null, panelCraft,
-                "Here you craft things");
         bottomRightPanel.setMnemonicAt(2, KeyEvent.VK_3);
+
+       
 
 
         //event panel
@@ -122,9 +126,9 @@ public final class GameWindow extends JFrame {
         return null;
     }
 
-    public static GameWindow getInstance(InventoryView inventoryView, int width, int height, MoneyView moneyView, EventsView eventsView, ShopView shopView){
+    public static GameWindow getInstance(InventoryView inventoryView, int width, int height, MoneyView moneyView, EventsView eventsView, ShopView shopView, CraftsView craftsView){
         if (gameWindow == null) {
-            gameWindow = new GameWindow(inventoryView, width, height, moneyView, eventsView, shopView);
+            gameWindow = new GameWindow(inventoryView, width, height, moneyView, eventsView, shopView, craftsView);
         }
         return gameWindow;
     }
